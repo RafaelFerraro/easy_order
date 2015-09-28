@@ -42,5 +42,14 @@ Lotus::Model.configure do
     #   attribute :id,   Integer
     #   attribute :name, String
     # end
+
+    collection :categories do
+      entity Category
+      repository CategoryRepository
+
+      attribute :id, Integer
+      attribute :name, String
+      attribute :description, String
+    end
   end
 end.load!
