@@ -1,0 +1,12 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+  <% categories.each do |category| %>
+    <tr>
+      <td><%= category.name %></td>
+      <td><%= category.description %></td>
+    </tr>
+  <% end %>
+</table>

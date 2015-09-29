@@ -1,0 +1,23 @@
+<% unless params.valid? %>
+  <ul>There was an error on your submission</ul>
+
+  <% params.errors.each do |error| %>
+    <li><%= error.attribute_name %> is required</li>
+  <% end %>
+<% end %>
+
+<%= form_for :category, '/admin/categories' do
+  div class: 'input' do
+    label :name
+    text_field :name
+  end
+
+  div class: 'input' do
+    label :description
+    text_field :description
+  end
+
+  div class: 'controls' do
+    submit 'Create Category'
+  end
+end %>
