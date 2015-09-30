@@ -18,3 +18,7 @@ end
 group :production do
   # gem 'puma'
 end
+
+group :development do
+  gem 'guard-rspec'
+end
