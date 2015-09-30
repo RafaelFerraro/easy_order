@@ -15,7 +15,7 @@ module Admin::Controllers::Categories
     def call(params)
       @category = CategoryRepository.find(params[:id])
 
-      return status(404, "Category does not found") unless @category
+      return status(400, "Category did not found") unless @category
 
       if params.valid?
         @category = update_category(params[:category])
