@@ -1,0 +1,25 @@
+<% unless params.valid? %>
+  <ul>There was an error on your submission</ul>
+
+  <% params.errors.each do |error| %>
+    <li><%= error.attribute_name %> is require</li>
+  <% end %>
+<% end %>
+
+<%=
+  form_for :category, update_category_url, method: :patch, values: { category: category } do
+    div 'input' do
+      label :name
+      text_field :name
+    end
+
+    div 'input' do
+      label :description
+      text_field :description
+    end
+
+    div 'controls' do
+      submit "Update Category"
+    end
+  end
+%>
