@@ -3,12 +3,20 @@
     <th>ID</th>
     <th>Name</th>
     <th>Description</th>
+    <th></th>
+    <th></th>
   </tr>
   <% categories.each do |category| %>
     <tr>
       <td><%= category.id %></td>
       <td><%= category.name %></td>
       <td><%= category.description %></td>
+      <td><%= edit_link(category.id) %></td>
+      <td><%= delete_form(category.id) %></td>
     </tr>
   <% end %>
 </table>
+
+<p>
+  <%= new_category_link %>
+</p>
