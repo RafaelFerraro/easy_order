@@ -35,14 +35,6 @@ Lotus::Model.configure do
   # Alternatively, you can use a block syntax like the following:
   #
   mapping do
-    # collection :users do
-    #   entity     User
-    #   repository UserRepository
-    #
-    #   attribute :id,   Integer
-    #   attribute :name, String
-    # end
-
     collection :categories do
       entity Category
       repository CategoryRepository
@@ -50,6 +42,16 @@ Lotus::Model.configure do
       attribute :id, Integer
       attribute :name, String
       attribute :description, String
+    end
+
+    collection :sub_categories do
+      entity SubCategory
+      repository SubCategoryRepository
+
+      attribute :id, Integer
+      attribute :name, String
+      attribute :description, String
+      attribute :category_id, Integer
     end
   end
 end.load!
