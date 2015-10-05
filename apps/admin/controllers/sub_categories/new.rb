@@ -4,7 +4,6 @@ module Admin::Controllers::SubCategories
 
     expose :categories
 
-    # TODO: spec
     def call(params)
       @categories = CategoryRepository.all
     end

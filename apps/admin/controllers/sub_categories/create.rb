@@ -10,13 +10,15 @@ module Admin::Controllers::SubCategories
       end
     end
 
-    expose :sub_category
+    expose :sub_category, :categories
 
     def call(params)
       if params.valid?
         @sub_category = SubCategoryRepository.create(SubCategory.new(params[:sub_category]))
 
         redirect_to routes.sub_categories_path
+      else
+        @categories = CategoryRepository.all
       end
     end
   end
