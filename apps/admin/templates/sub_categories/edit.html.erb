@@ -1,0 +1,25 @@
+<% unless params.valid? %>
+  <ul>There was an error on your submission</ul>
+
+  <% params.errors do |error| %>
+    <li><%= error.attribute_name %> is required</li>
+  <% end %>
+<% end %>
+
+<%=  
+  form_for :sub_category, routes.sub_category_path(sub_category.id), method: "patch" do
+    div class: 'field' do
+      label :name
+      text_field :name
+    end
+
+    div class: 'field' do
+      label :description
+      text_field :description
+    end
+
+    div class: 'controls' do
+      submit "Update SubCategory"
+    end
+  end
+%>
