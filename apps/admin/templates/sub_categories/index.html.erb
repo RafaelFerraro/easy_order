@@ -4,7 +4,8 @@
     <th>Name</th>
     <th>Description</th>
     <th>Category</th>
-    <th>Actions</th>
+    <th></th>
+    <th></th>
   </tr>
   <% sub_categories.each do |sub_category| %>
   <tr>
@@ -13,6 +14,7 @@
     <td><%= sub_category.description %></td>
     <td><%= sub_category.category.name %></td>
     <td><%= link_to "Edit", routes.edit_sub_category_path(sub_category.id) %></td>
+    <td><%= delete_form(sub_category.id) %></td>
   </tr>
   <% end %>
 </table>
