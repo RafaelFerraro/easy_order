@@ -12,6 +12,7 @@ describe Admin::Views::SubCategories::ViewHelper do
 
   after do
     CategoryRepository.clear
+    SubCategoryRepository.clear
   end
 
   class Dummy
@@ -28,9 +29,27 @@ describe Admin::Views::SubCategories::ViewHelper do
       allow(dummy).to receive(:categories).and_return([category_shoes, category_shirts])
     end
 
-    it 'returns a hash with key as id of category and value as name of category' do
-      expect(dummy.selections[category_shoes.id.to_s]).to eq("shoes")
-      expect(dummy.selections[category_shirts.id.to_s]).to eq("shirts")
+    context 'when there is sub_category' do
+      let(:current_category)  { CategoryRepository.create(Category.new(name: "current_category")) }
+      let(:sub_category)      { SubCategoryRepository.create(SubCategory.new(name: "sub_category", category_id: current_category.id)) }
+      let(:response)          { dummy.selections(sub_category) }
+
+      before { response }
+
+      it "returns a hash with all categories, but the current at last position" do
+        expect(response).to eq({ category_shoes.id.to_s => "shoes", category_shirts.id.to_s => "shirts", current_category.id.to_s => "current_category" })
+      end
+    end
+
+    context 'when there is no sub_category' do
+      let(:response) { dummy.selections }
+
+      before { response }
+
+      it 'returns a hash with key as id of category and value as name of category' do
+        expect(response[category_shoes.id.to_s]).to eq("shoes")
+        expect(response[category_shirts.id.to_s]).to eq("shirts")
+      end  
     end
   end
 end
