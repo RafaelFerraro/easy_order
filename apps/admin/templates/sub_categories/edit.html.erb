@@ -1,13 +1,13 @@
 <% unless params.valid? %>
   <ul>There was an error on your submission</ul>
 
-  <% params.errors do |error| %>
+  <% params.errors.each do |error| %>
     <li><%= error.attribute_name %> is required</li>
   <% end %>
 <% end %>
 
 <%=  
-  form_for :sub_category, routes.sub_category_path(sub_category.id), method: "patch" do
+  form_for :sub_category, routes.sub_category_path(sub_category.id), method: "patch", values: { sub_category: sub_category } do
     div class: 'field' do
       label :name
       text_field :name
@@ -16,6 +16,11 @@
     div class: 'field' do
       label :description
       text_field :description
+    end
+
+    div class: 'field' do
+      label :category_id
+      select :category_id, { sub_category.category_id.to_s => sub_category.category.name }.merge!(selections)
     end
 
     div class: 'controls' do
