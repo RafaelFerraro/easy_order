@@ -53,5 +53,20 @@ Lotus::Model.configure do
       attribute :description, String
       attribute :category_id, Integer
     end
+
+    collection :products do
+      entity Product
+      repository ProductRepository
+
+      attribute :id, Integer
+      attribute :title, String
+      attribute :description, String
+      attribute :quantity, Integer
+      attribute :size, String
+      attribute :color, String
+      attribute :sale_price, Float
+      attribute :purchase_price, Float
+      attribute :sub_category_id, Integer
+    end
   end
 end.load!
