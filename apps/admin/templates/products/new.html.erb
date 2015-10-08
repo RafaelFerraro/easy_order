@@ -1,0 +1,52 @@
+<%= 
+  form_for :product, routes.products_path, method: :post do 
+    div class: 'field' do
+      label :title
+      text_field :title
+    end
+
+    div class: 'field' do
+      label :description
+      text_field :description
+    end
+
+    div class: 'field' do
+      label :description
+      text_field :description
+    end
+
+    div class: 'field' do
+      label :color
+      text_field :color
+    end
+
+    div class: 'field' do
+      label :size
+      text_field :size
+    end
+
+    div class: 'field' do
+      label :quantity
+      select :quantity, quantities_select((0..100))
+    end
+
+    div class: 'field' do
+      label :purchase_price
+      text_field :purchase_price
+    end
+
+    div class: 'field' do
+      label :sale_price
+      text_field :sale_price
+    end
+
+    div class: 'field' do
+      label :sub_category_id
+      select :sub_category_id, sub_categories_select
+    end
+
+    div class: 'controls' do
+      submit "Create Product"
+    end
+  end
+%>
