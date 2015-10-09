@@ -35,7 +35,7 @@
 
       div class: 'field' do
         label :quantity
-        select :quantity, quantities_select((0..100), product.quantity)
+        select :quantity, select_builder((0..100), { product.quantity.to_s => product.quantity.to_s })
       end
 
       div class: 'field' do
@@ -50,7 +50,7 @@
 
       div class: 'field' do
         label :sub_category_id
-        select :sub_category_id, sub_categories_select
+        select :sub_category_id, select_builder
       end
 
       div class: 'controls' do

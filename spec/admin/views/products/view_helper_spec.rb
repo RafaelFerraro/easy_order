@@ -1,50 +1,48 @@
 require 'spec_helper'
 
 describe Admin::Views::Products::ViewHelper do
-  let(:sub_categories) { [OpenStruct.new(id: 1, name: 'first'), OpenStruct.new(id: 2, name: 'second')] }
+  let(:sub_category)   { OpenStruct.new(id: 3, name: 'sub_category') }
 
   class View
     include Admin::Views::Products::ViewHelper
 
     # stub
     def sub_categories
+      [OpenStruct.new(id: 1, name: 'first'), OpenStruct.new(id: 2, name: 'second')]
     end
   end
   
-  describe '#sub_categories_select' do
+  describe '#select_builder' do
     let(:view) { View.new }
 
-    before do
-      allow(view).to receive(:sub_categories).and_return(sub_categories)
-    end
-
-    context 'when there is current sub_category' do
-      let(:sub_category) { OpenStruct.new(id: 3, name: 'current') }
-
-      it 'inserts the data of that on last position of hash and return it' do
-        expect(view.sub_categories_select(sub_category)).to eq({ '3' => 'current', '1' => 'first', '2' => 'second' })
+    context 'when nothing is passed' do
+      it 'returns a hash with values from sub_categories objects' do
+        expect(view.select_builder).to eq({ '1' => 'first', '2' => 'second' })
       end
     end
 
-    context 'when there is no current sub_category' do
-      it 'returns only the values from sub_categories attribute' do
-        expect(view.sub_categories_select).to eq({ '1' => 'first', '2' => 'second'})
-      end
-    end
-  end
+    context 'when only a list is passed' do
+      let(:numbers) { [0, 1, 2, 3] }
 
-  describe '#quantities_select' do
-    let(:view) { View.new }
-    
-    context 'when there are a current quantity' do
-      it 'returns an hash with current value at the first position' do
-        expect(view.quantities_select((0..3), 5)).to eq({ '5' => '5', '0' => '0', '1' => '1', '2' => '2', '3' => '3', })
+      it 'returns a hash with the values in the list' do
+        expect(view.select_builder(numbers)).to eq({ '0' => '0', '1' => '1', '2' => '2', '3' => '3' })
       end
     end
 
-    context 'when there are no quantity' do
-      it 'returns only a hash without a current value' do
-        expect(view.quantities_select((0..3))).to eq({ '0' => '0', '1' => '1', '2' => '2', '3' => '3' })
+    context 'when only a current value is passed' do
+      let(:current) { Hash['5' => 'current'] }
+
+      it 'returns an hash with the values from sub_categories objects and include the current value' do
+        expect(view.select_builder(nil, current)).to eq({ '1' => 'first', '2' => 'second', '5' => 'current' })
+      end
+    end
+
+    context 'when both value is passed' do
+      let(:numbers) { [0, 1, 2, 3] }
+      let(:current) { Hash['5' => '5'] }
+
+      it 'returns a hash with value into the listing and include the current value' do
+        expect(view.select_builder(numbers, current)).to eq({ '0' => '0', '1' => '1', '2' => '2', '3' => '3', '5' => '5' })
       end
     end
   end
