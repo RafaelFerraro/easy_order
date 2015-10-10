@@ -10,7 +10,7 @@
       <td><%= product.title %></td>
       <td><%= product.size %></td>
       <td><%= product.color %></td>
-      <td>Edit</td>
+      <td><%= link_to 'Edit Product', routes.edit_product_path(product.id) %></td>
     </tr>
   <% end %>
 </table>
