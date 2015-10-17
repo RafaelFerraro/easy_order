@@ -18,6 +18,9 @@ describe ProductRepository do
     let(:product_four)  { ProductRepository.create(Product.new(title: 'product_four', description: 'description for product_four', size: '42', color: 'black', quantity: 10, sale_price: 100.0, purchase_price: 40.0, sub_category_id: another_sub_category.id)) }
 
     before do
+      # mock created_at and update_at fields 
+      allow(Time).to receive(:now).and_return(Time.new('2015-10-17 15:59:19.218852000 -0300'))
+
       category
       another_category
       sub_category

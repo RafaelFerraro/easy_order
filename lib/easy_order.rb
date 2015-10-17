@@ -71,6 +71,8 @@ Lotus::Model.configure do
       attribute :sale_price, Float
       attribute :purchase_price, Float
       attribute :sub_category_id, Integer
+      attribute :created_at, Time
+      attribute :updated_at, Time
     end
   end
 end.load!
