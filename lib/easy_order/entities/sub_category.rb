@@ -1,7 +1,7 @@
 class SubCategory
   include Lotus::Entity
 
-  attributes :name, :description, :category_id
+  attributes :name, :description, :category_id, :created_at, :updated_at
 
   def category
     CategoryRepository.find(self.category_id)

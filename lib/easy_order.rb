@@ -54,6 +54,8 @@ Lotus::Model.configure do
       attribute :name, String
       attribute :description, String
       attribute :category_id, Integer
+      attribute :created_at, Time
+      attribute :updated_at, Time
     end
 
     collection :products do
