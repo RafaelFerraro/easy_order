@@ -15,5 +15,13 @@ describe Category do
     it 'responds to description attribute' do
       expect(subject.respond_to? :description).to be_truthy
     end
+
+    it 'responds to created_at attribute' do
+      expect(subject.respond_to? :created_at).to be_truthy
+    end
+
+    it 'responds to updated_at attribute' do
+      expect(subject.respond_to? :updated_at).to be_truthy
+    end
   end
 end

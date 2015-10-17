@@ -42,6 +42,8 @@ Lotus::Model.configure do
       attribute :id, Integer
       attribute :name, String
       attribute :description, String
+      attribute :created_at, Time
+      attribute :updated_at, Time
     end
 
     collection :sub_categories do
