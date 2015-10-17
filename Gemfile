@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 gem 'bundler'
 gem 'rake'
 
-gem 'lotusrb',       '0.4.1'
-gem 'lotus-model',   '~> 0.4'
+gem 'lotusrb',       '0.5.0'
+gem 'lotus-model',   '0.5.0'
 
 gem 'pg'
 
