@@ -28,12 +28,12 @@ describe Web::Controllers::Products::Search do
     let(:params) { Hash[query: ''] }
 
     it 'gets the most recents products' do
-      expect(ProductRepository).to receive(:most_recents).with(no_args)
+      expect(ProductRepository).to receive(:all).with(no_args)
       action.call(params)
     end
 
     it 'exposes the products' do
-      allow(ProductRepository).to receive(:most_recents).and_return(['first', 'second'])
+      allow(ProductRepository).to receive(:all).and_return(['first', 'second'])
 
       action.call(params)
       expect(action.exposures[:products]).to eq(['first', 'second'])

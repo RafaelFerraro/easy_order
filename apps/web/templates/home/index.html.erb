@@ -1,1 +1,14 @@
 <%= link_to "Admin Page", '/admin' %>
+
+<%=
+  form_for nil, routes.search_path do
+    div class: 'field' do
+      
+      text_field :query
+    end
+
+    div class: 'controls' do
+      submit 'Send'
+    end
+  end
+%>

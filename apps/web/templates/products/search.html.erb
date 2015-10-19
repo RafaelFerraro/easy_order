@@ -1,0 +1,27 @@
+<%=
+  form_for nil, routes.search_path do
+    div class: 'field' do
+      text_field :query
+    end
+
+    div class: 'controls' do
+      submit 'send'
+    end
+  end
+%>
+
+<table>
+  <tr>
+    <th>title</th>
+    <th>Sale price</th>
+  </tr>
+  <% products.each do |product| %>
+    <tr>
+    <% if product.respond_to? :title %>
+      <td><%= product.title %></td>
+    <% else %>
+      <td><%= product[:title] %></td>
+    <% end %>
+    </tr>
+  <% end %>
+</table>

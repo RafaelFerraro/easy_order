@@ -8,7 +8,7 @@ module Web::Controllers::Products
       query = params[:query]
 
       @products = if query.empty? || query.nil?
-        ProductRepository.most_recents
+        ProductRepository.all
       else
         ProductRepository.search(query)
       end

@@ -6,8 +6,4 @@ class ProductRepository
    
     fetch(q).map { |product| product } 
   end
-
-  def self.most_recents
-    # TODO
-  end
 end
