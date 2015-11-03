@@ -74,5 +74,14 @@ Lotus::Model.configure do
       attribute :created_at, Time
       attribute :updated_at, Time
     end
+
+    collection :photos do
+      entity Photo
+      repository PhotoRepository
+
+      attribute :id, Integer
+      attribute :file_name, String
+      attribute :product_id, Integer
+    end
   end
 end.load!
