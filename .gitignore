@@ -1,0 +1,5 @@
+/apps/admin/controllers/products/photos/create.rb
+/apps/admin/uploaders/photo_uploader.rb
+/apps/admin/views/products/photos/create.rb
+/db/migrations/20151104180728_create_photos.rb
+/spec/admin/controllers/products/photos/create_spec.rb

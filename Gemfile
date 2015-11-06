@@ -10,6 +10,8 @@ gem 'pg'
 
 gem 'rspec'
 
+gem 'mini_magick'
+
 group :test do
   gem 'minitest'
   gem 'capybara'
