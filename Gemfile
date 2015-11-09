@@ -11,6 +11,8 @@ gem 'pg'
 gem 'rspec'
 
 gem 'mini_magick'
+gem 'carrierwave'
+gem 'carrierwave-datamapper'
 
 group :test do
   gem 'minitest'

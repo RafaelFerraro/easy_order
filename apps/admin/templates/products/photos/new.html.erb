@@ -1,8 +1,21 @@
-<%=
-  form_for :photo, routes.product_photos_path(product.id), method: :post do
+<!-- <%=
+  form_for :photo, routes.product_photos_path(product.id), method: :post, multipart: true do
     label :file
     file_field :file
 
     submit "Create photo"
   end
-%>
+%> -->
+
+<form method="post" action=<%= routes.product_photos_path(product.id) %> enctype="multipart/form-data">
+  <label for="photo-file">Photo</label>
+  <input name="photo[file]" type="file" id="photo-file" />
+  <button type="submit">Create Photo</button>
+</form>
+
+<% unless photos_by_product(product).empty? %>
+  <% photos_by_product(product).each do |photo| %>
+    <img src="<%= photo.file.url %>" height="30" width="30">
+  <% end %>
+<% end %>
+
